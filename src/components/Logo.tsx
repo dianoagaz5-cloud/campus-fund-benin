@@ -1,25 +1,15 @@
-export function Logo({ size = "md" }: { size?: "sm" | "md" | "lg" }) {
-  const dim = size === "sm" ? 32 : size === "lg" ? 56 : 40;
-  const text = size === "sm" ? "text-base" : size === "lg" ? "text-2xl" : "text-lg";
+import { cn } from "@/lib/utils";
+
+export function Logo({ size = "md", inverse = true }: { size?: "sm" | "md" | "lg"; inverse?: boolean }) {
+  const compact = size === "sm";
   return (
-    <div className="flex items-center gap-2.5">
-      <div
-        className="rounded-full flex items-center justify-center font-bold text-[#0d3d2e]"
-        style={{
-          width: dim,
-          height: dim,
-          background: "linear-gradient(135deg, #e3c97a 0%, #c9a84c 100%)",
-          boxShadow: "0 2px 8px rgba(201,168,76,0.4)",
-          fontFamily: "var(--font-display)",
-          fontSize: dim * 0.42,
-        }}
-      >
+    <div className="flex items-center gap-3" aria-label="CampusFund">
+      <div className={cn("grid shrink-0 place-items-center bg-accent font-display font-extrabold text-primary", compact ? "h-8 w-8 text-[10px]" : size === "lg" ? "h-12 w-12 text-sm" : "h-9 w-9 text-xs")}>
         CF
       </div>
-      <div className={`font-display font-bold leading-none ${text}`} style={{ fontFamily: "var(--font-display)" }}>
-        <span className="text-white">CAMPUS</span>
-        <span style={{ color: "#c9a84c" }}>FUND</span>
-      </div>
+      <span className={cn("font-display font-extrabold", compact ? "text-base" : size === "lg" ? "text-2xl" : "text-lg", inverse ? "text-primary-foreground" : "text-primary")}>
+        Campus<span className="text-accent">Fund</span>
+      </span>
     </div>
   );
 }
