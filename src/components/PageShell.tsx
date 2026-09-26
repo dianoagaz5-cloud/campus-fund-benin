@@ -5,7 +5,7 @@ import type { ReactNode } from "react";
 
 export function PageShell({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen flex flex-col" style={{ background: "#fafaf8" }}>
+    <div className="min-h-screen flex flex-col bg-background">
       <Navbar />
       <motion.main
         initial={{ opacity: 0, y: 16 }}
@@ -24,11 +24,11 @@ import type { Variants } from "framer-motion";
 
 export const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.55, ease: [0.22, 1, 0.36, 1] } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.45, ease: [0.22, 1, 0.36, 1] } },
 };
 
 export const stagger: Variants = {
   hidden: {},
-  show: { transition: { staggerChildren: 0.08 } },
+  show: { transition: { staggerChildren: 0.06 } },
 };
 
